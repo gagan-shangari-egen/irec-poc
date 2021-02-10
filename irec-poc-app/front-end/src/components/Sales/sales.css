@@ -1,0 +1,27 @@
+.sales-main {
+  margin-left: 140px;
+}
+.sales-heading {
+  text-align: center;
+}
+.sales-heading-text {
+  font-size: 24px;
+  font-weight: 700;
+}
+.sales-content-head {
+  background-color: rgb(254, 139, 88);
+  position: relative;
+  color: white;
+  border-radius: 15px 0px 15px 0px;
+  padding: 10px;
+}
+.sales-content-tabName {
+  padding: 10px;
+  font-size: 15px;
+  color: black;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.sales-tabName-ItemsDetails {
+  margin-left: 20px;
+}
