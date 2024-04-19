@@ -1,0 +1,47 @@
+{
+  "name" : "adl-com-d1-leaves-billing-LoadReedsEmployee",
+  "jobMode" : "SCRIPT",
+  "description" : "billing_process",
+  "role" : "arn:aws:iam::056994788717:role/adl-com-d1-leaves-service-role",
+  "executionProperty" : {
+    "maxConcurrentRuns" : 15
+  },
+  "command" : {
+    "name" : "glueetl",
+    "scriptLocation" : "s3://adl-com-d1-leaves-code-us-east-1-rpedviw/glue/leaves-billing-LoadReedsEmployee/leaves-billing-LoadReedsEmployee.py",
+    "pythonVersion" : "3"
+  },
+  "defaultArguments" : {
+    "--job-bookmark-option" : "job-bookmark-disable",
+    "--TempDir" : "s3://adl-com-d1-leaves-wrk-us-east-1-jndvz7g/leaves/billing_report/tmp/",
+    "--targetpath" : "s3://adl-com-d1-leaves-wrk-us-east-1-jndvz7g/leaves/",
+    "--extra-jars" : "s3://adl-com-d1-leaves-code-us-east-1-rpedviw/shared/leaves/framework/utilities/dummy.jar",
+    "--enable-metrics" : "true",
+    "--extra-py-files" : "s3://adl-com-d1-leaves-code-us-east-1-rpedviw/shared/leaves/framework/utilities/alight_utilities.py,s3://adl-com-d1-leaves-code-us-east-1-rpedviw/shared/leaves/framework/utilities/rs_config.json",
+    "--spark-event-logs-path" : "s3://aws-glue-assets-056994788717-us-east-1/sparkHistoryLogs/",
+    "--enable-job-insights" : "false",
+    "--additional-python-modules" : "s3://adl-com-d1-leaves-code-us-east-1-rpedviw/shared/leaves/framework/utilities/redshift_connector-2.0.917-py3-none-any.whl",
+    "--enable-observability-metrics" : "true",
+    "--enable-continuous-cloudwatch-log" : "true",
+    "--job-language" : "python",
+    "--enable-auto-scaling" : "true",
+    "--env" : "dev"
+  },
+  "connections" : {
+    "connections" : [ "adl-com-d1-leaves-gluegeneric-connection" ]
+  },
+  "maxRetries" : 0,
+  "allocatedCapacity" : 10,
+  "timeout" : 60,
+  "maxCapacity" : 10.0,
+  "securityConfiguration" : "adl-com-leaves-billing-d1-LoadReedsEmployee",
+  "glueVersion" : "4.0",
+  "numberOfWorkers" : 10,
+  "workerType" : "G.1X",
+  "sourceControlDetails" : {
+    "provider" : "GITHUB",
+    "repository" : "irec-poc",
+    "branch" : "main",
+    "folder" : "MBA"
+  }
+}
